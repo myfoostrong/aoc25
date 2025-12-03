@@ -23,6 +23,7 @@ R2
 L2
 """
 
+
 def get_val(s: str) -> int:
     x = int(s[1:])
     if s[0] == "R":
@@ -34,15 +35,15 @@ def get_pos(curr_pos: int, s: str) -> int:
     return (get_val(s) + curr_pos) % 100
 
 
-def get_pos2(curr_pos: int, s: str) -> Tuple[int,int]:
+def get_pos2(curr_pos: int, s: str) -> Tuple[int, int]:
     x = get_val(s)
     new_pos = curr_pos + x
     count = abs(new_pos // 100)
     if curr_pos == 0 and x < 0 and count > 0:
-        count-=1
+        count -= 1
     adj_pos = new_pos % 100
     if adj_pos == 0 and new_pos < 100:
-        count +=1
+        count += 1
     return adj_pos, count
 
 
@@ -58,7 +59,7 @@ def process_input(input: list[str]) -> int:
             continue
         pos = get_pos(pos, s)
         if pos == 0:
-            count+=1
+            count += 1
     return count
 
 
@@ -72,12 +73,14 @@ def process_input2(input: list[str]) -> int:
         count += ticks
     return count
 
+
 def star1(input: str) -> int:
     return process_input(parse_input(input))
 
 
 def star2(input: str) -> int:
     return process_input2(parse_input(input))
+
 
 if __name__ == "__main__":
     print(star1(example_input))
